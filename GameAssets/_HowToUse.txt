@@ -1,0 +1,46 @@
+===========================================================================================
+GameAssets - Static Reference Class
+===========================================================================================
+
+Overview:
+---------
+The `GameAssets` class serves as a static reference to multiple usable objects within the game,
+allowing easy access to frequently used assets such as the player object, movement data,
+collision data, and other gameplay-related settings. This design allows you to instantiate the
+`GameAssets` prefab dynamically at runtime and access it via a singleton pattern.
+
+Features:
+---------
+- Singleton pattern for global access to GameAssets.
+- Organized variable categories for readability and maintainability.
+- Support for dynamic asset loading using Unity's Resources folder.
+
+===========================================================================================
+Setup Instructions:
+-------------------
+
+1. Create the `Resources` folder:
+   - Inside your main **Assets** folder, create a new folder named "Resources". This is where
+     Unity will look for dynamically loaded assets.
+
+2. Create the `GameAssets` prefab:
+   - Inside the **Resources** folder, create an empty prefab and name it "GameAssets".
+   - Attach the `GameAssets` script to this prefab as a component. This setup will allow you to
+     instantiate the `GameAssets` prefab from the Resources folder during runtime.
+
+3. Ensure the player object exists in the scene:
+   - The script tries to locate the player GameObject in the scene using GameObject.Find("Player").
+     Make sure that a GameObject named **"Player"** exists in your scene to prevent runtime
+     exceptions.
+   - You can modify this script to fit your specific player object structure or load the player
+     in a different way if necessary.
+
+===========================================================================================
+How to Use:
+-----------
+
+Accessing Game Assets:
+----------------------
+You can access the `GameAssets` instance through its singleton property `instance`. For example:
+
+GameObject player = GameAssets.instance.Player;
