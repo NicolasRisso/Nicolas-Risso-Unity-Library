@@ -1,5 +1,5 @@
 ===========================================================================================
-Singleton Classes Summary
+Singleton Classes Summary - With Multi Thread Support
 ===========================================================================================
 
 1. **SingletonPersistent Class:**
@@ -23,4 +23,51 @@ Singleton Classes Summary
 
    **Use case**: Suitable for components or objects that should have only one instance per scene, but do not need to persist between scenes.
 
+===========================================================================================
+New Singleton Utility Functions - 10/08/24
+===========================================================================================
+
+1. **HasInstance Property:**
+   - **Description**: Returns a boolean value indicating if the Singleton instance already exists.
+   - **Usage**: Useful to check if the Singleton has been initialized before attempting to use it.
+   - **Code Example**:
+     ```csharp
+     if (SingletonPersistent<MyManager>.HasInstance)
+     {
+         // Safe to use the Singleton instance
+     }
+     ```
+
+2. **DestroySingleton Method:**
+   - **Description**: Destroys the current Singleton instance and its associated GameObject.
+   - **Usage**: Useful if you need to manually destroy the Singleton instance at runtime.
+   - **Code Example**:
+     ```csharp
+     SingletonPersistent<MyManager>.DestroySingleton();
+     ```
+
+3. **InitializeWithDependencies Method:**
+   - **Description**: Initializes the Singleton with a given instance instead of creating a new one.
+   - **Usage**: Allows injecting a pre-existing instance into the Singleton, useful for dependency injection or testing.
+   - **Code Example**:
+     ```csharp
+     MyManager manager = new MyManager();
+     SingletonPersistent<MyManager>.InitializeWithDependencies(manager);
+     ```
+
+4. **ResetInstance Method (Editor-only):**
+   - **Description**: Resets the Singleton instance to `null` without destroying its GameObject.
+   - **Usage**: Only available in the Unity Editor. Useful for testing or debugging when you want to reset the instance without removing the GameObject from the scene.
+   - **Code Example**:
+     ```csharp
+     SingletonPersistent<MyManager>.ResetInstance();
+     ```
+
+5. **LogSingletonState Method (Editor-only):**
+   - **Description**: Logs whether the Singleton is currently instantiated or null.
+   - **Usage**: Only available in the Unity Editor. Helps to debug the state of the Singleton during development.
+   - **Code Example**:
+     ```csharp
+     SingletonPersistent<MyManager>.LogSingletonState();
+     ```
 ===========================================================================================
