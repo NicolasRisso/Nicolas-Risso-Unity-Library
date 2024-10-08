@@ -1,0 +1,26 @@
+===========================================================================================
+Singleton Classes Summary
+===========================================================================================
+
+1. **SingletonPersistent Class:**
+
+   - **Purpose**: A generic singleton that persists across scenes.
+   - **Behavior**: 
+     - If an instance of the class does not already exist, a new GameObject is created, and the class component is added to it.
+     - The GameObject is marked as "DontDestroyOnLoad", ensuring that it is not destroyed when switching between scenes.
+     - The instance is hidden in the hierarchy using `HideFlags.HideAndDontSave`.
+     - Ensures only one instance of the class exists throughout the game.
+
+   **Use case**: Ideal for components or managers that need to exist throughout the entire game and across multiple scenes, like a GameManager or AudioManager.
+
+2. **Regular Singleton Class (Non-Persistent):**
+
+   - **Purpose**: A standard generic singleton.
+   - **Behavior**: 
+     - Similar to `SingletonPersistent`, but the instance is not marked as "DontDestroyOnLoad".
+     - The instance will be destroyed when the scene changes.
+     - Ensures only one instance of the class exists, but the instance will not persist across scene changes.
+
+   **Use case**: Suitable for components or objects that should have only one instance per scene, but do not need to persist between scenes.
+
+===========================================================================================
